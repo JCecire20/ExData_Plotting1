@@ -8,7 +8,7 @@ subSetData <- dataHPC[dataHPC$Date %in% c("1/2/2007","2/2/2007") ,]
 
 ## Plot 4: Global Active Power,Voltage, Energy sub metering, Global rective power
 globalActivePower <- as.numeric(subSetData$Global_active_power)
-datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+dateTime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
 subMetering1 <- as.numeric(subSetData$Sub_metering_1)
 subMetering2 <- as.numeric(subSetData$Sub_metering_2)
 subMetering3 <- as.numeric(subSetData$Sub_metering_3)
@@ -20,27 +20,27 @@ par(mfrow = c(2, 2))
 par(mar = c(4,4,2,1))
 
 #Global Active Power Plot
-plot(datetime, globalActivePower, type="l"
+plot(dateTime, globalActivePower, type="l"
      , xlab=""
      , ylab="Global Active Power"
      , cex.lab=.65
      , cex.axis=.65)
 
 #Voltage Plot
-plot(datetime, voltage, type="l"
+plot(dateTime, voltage, type="l"
      , xlab="datetime"
      , ylab="Voltage"
      , cex.lab=.65
      , cex.axis=.65)
 
 #Sub Metering Plot
-plot(datetime, subMetering1, type="l" 
+plot(dateTime, subMetering1, type="l" 
      , xlab=""
      , ylab="Energy sub metering"
      , cex.lab=.65
      , cex.axis=.65)
-lines(datetime, subMetering2, type="l", col="red")
-lines(datetime, subMetering3, type="l", col="blue")
+lines(dateTime, subMetering2, type="l", col="red")
+lines(dateTime, subMetering3, type="l", col="blue")
 legend("topright"
        , col=c("black","red","blue")
        , c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  ")
@@ -49,7 +49,7 @@ legend("topright"
        , bty="n")
 
 #Global Reactive Power Plot
-plot(datetime, globalReactivePower, type="l"
+plot(dateTime, globalReactivePower, type="l"
      , xlab="datetime"
      , ylab="Global_reactive_power"
      , cex.lab=.65
